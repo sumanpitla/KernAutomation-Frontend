@@ -12,7 +12,13 @@ import Profile from './components/common/ProfileManagement/Profile';
 import LeaveManagement from './components/common/LeaveManagement/Leave';
 import ApplyLeave from './components/common/LeaveManagement/ApplyLeave';
 import ApproveLeave from './components/common/LeaveManagement/ApproveLeave';
-import TaskAdd from './components/common/TasksManagement/TaskAdd';
+//Task Management components
+import Task from './components/common/TasksManagement/Tasks';
+import NewTask from './components/common/TasksManagement/NewTask';
+import CompletedTask from './components/common/TasksManagement/CompletedTask';
+import PendingTask from './components/common/TasksManagement/PendingTask';
+import TaskStatus from './components/common/TasksManagement/TaskStatus';
+
 import Location from './components/common/LocationManagement/LiveLocations';
 import Reports from './components/common/ReportsManagement/Reports';
 import Routing from './components/common/RoutingManagement/Route';
@@ -25,6 +31,29 @@ import Indents from './components/common/IndentsManagement/Indents';
 //adminSpecificComponents
 import Contracts from './components/AdminSpecial/ContractsManagement/Contracts';
 import BmcsCc from './components/AdminSpecial/BmcManagement/BmcsCc';
+//Employee Management Routes
+import HomePageEmployeesMangement from './components/AdminSpecial/EmployeesManagement/HomePageEmployeesMangement';
+import CreateUser from './components/AdminSpecial/EmployeesManagement/CreateUser';
+import AssignRole from './components/AdminSpecial/EmployeesManagement/AssignRole';
+import GetPendingRoleUsers from './components/AdminSpecial/EmployeesManagement/GetPendingRoleUsers';
+import GetUsers from './components/AdminSpecial/EmployeesManagement/GetUsers';
+import MapUser from './components/AdminSpecial/EmployeesManagement/MapUser';
+import CreateVillager from './components/AdminSpecial/EmployeesManagement/VillageLevel/CreateVillager';
+import EditVillagers from './components/AdminSpecial/EmployeesManagement/VillageLevel/EditVillager';
+
+//Places Management Routes
+import HomePagePlacesManagement from './components/AdminSpecial/PlacesManagement/HomePagePlacesManagement';
+import CreateState from './components/AdminSpecial/PlacesManagement/CreateState';
+import GetStates from './components/AdminSpecial/PlacesManagement/GetStates';
+import CreateDistrict from './components/AdminSpecial/PlacesManagement/CreateDistrict';
+import GetDistricts from './components/AdminSpecial/PlacesManagement/GetDistricts';
+import CreateCentre from './components/AdminSpecial/PlacesManagement/CreateCentre';
+import GetCenters from './components/AdminSpecial/PlacesManagement/GetCenters';
+import CreateVillage from './components/AdminSpecial/PlacesManagement/CreateVillage';
+
+
+
+
 
 //import AdminRoutes from './Routes/AdminRoutes';
 const App = () => (
@@ -46,7 +75,11 @@ const App = () => (
           <Route path="/admin/leave-management/apply" element={<ApplyLeave />} />
           <Route path="/admin/leave-management/approve" element={<ApproveLeave />} />
           {/* //Tasks Managemnet */}
-          <Route path="/admin/tasks" element={<TaskAdd />} />
+          <Route path="/admin/tasks" element={<Task />} />
+          <Route path="/admin/tasks/new" element={<NewTask />} />
+          <Route path="/admin/tasks/completed" element={<CompletedTask />} />
+          <Route path="/admin/tasks/pending" element={<PendingTask />} />
+          <Route path="/admin/tasks/status" element={<TaskStatus />} />
           {/* //Location Managemnet */}
           <Route path="/admin/locations" element={<Location />} />
           {/* //Reports Managemnet */}
@@ -64,6 +97,25 @@ const App = () => (
           <Route path="/admin/contracts" element={<Contracts />} />
           {/* //BMCs & CC Managemnet */}
           <Route path="/admin/bmcs-cc" element={<BmcsCc />} />
+          {/* //Employees Managemnet */}
+          <Route path="/admin/employees" element={<HomePageEmployeesMangement />} />
+          <Route path="/admin/employees/create" element={<CreateUser />} />
+          <Route path="/admin/employees/assign-role" element={<AssignRole />} />
+          <Route path="/admin/employees/pending-role" element={<GetPendingRoleUsers />} />
+          <Route path="/admin/employees/get-users" element={<GetUsers />} />
+          <Route path="/admin/employees/map-user" element={<MapUser />} />
+          <Route path="/admin/employees/create-villager" element={<CreateVillager />} />
+          <Route path="/admin/employees/edit-villager" element={<EditVillagers />} />
+          {/* //Places Managemnet */}
+          <Route path="/admin/places" element={<HomePagePlacesManagement />} />
+          <Route path="/admin/places/create-state" element={<CreateState />} />
+          <Route path="/admin/places/get-states" element={<GetStates />} />
+          <Route path="/admin/places/create-district" element={<CreateDistrict />} />
+          <Route path="/admin/places/get-districts" element={<GetDistricts />} />
+          <Route path="/admin/places/create-centre" element={<CreateCentre />} />
+          <Route path="/admin/places/get-centers" element={<GetCenters />} />
+          <Route path="/admin/places/create-village" element={<CreateVillage />} />
+          
       
       
     </Routes>

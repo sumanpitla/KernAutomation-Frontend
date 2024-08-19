@@ -14,7 +14,7 @@ const PaySlips = () => {
                 <DatePicker
                     selected={selectedDate}
                     onChange={(date) => setSelectedDate(date)}
-                    dateFormat="MM/yyyy"
+                    dateFormat="DD/MM/yyyy"
                     showMonthYearPicker
                     customInput={
                         <Input

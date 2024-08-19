@@ -2,11 +2,11 @@
 import React from 'react';
 import { Box, VStack, Link, Icon } from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
-import { FaHome, FaClipboardList, FaUser, FaTasks, FaMapMarkerAlt, FaChartBar, FaFileAlt, FaBox, FaRoute, FaFileContract, FaWarehouse } from 'react-icons/fa';
+import { FaHome, FaClipboardList, FaUser, FaTasks, FaMapMarkerAlt, FaChartBar, FaFileAlt, FaBox, FaRoute, FaFileContract, FaWarehouse,FaUsers,FaMapMarker } from 'react-icons/fa';
 
 const Sidebar = () => {
     return (
-        <Box width="200px" bg="gray.100" p="4" height="70vh">
+        <Box width="200px" bg="gray.100" p="4" height="80h">
             <VStack align="start" spacing="4">
                 <Link as={RouterLink} to="/admin/home">
                     <Icon as={FaHome} mr="2" /> Home
@@ -43,6 +43,12 @@ const Sidebar = () => {
                 </Link>
                 <Link as={RouterLink} to="/admin/bmcs-cc">
                     <Icon as={FaWarehouse} mr="2" /> BMCs & CC
+                </Link>
+                <Link as={RouterLink} to="/admin/employees">
+                    <Icon as={FaUsers} mr="2" /> Employees
+                </Link>
+                <Link as={RouterLink} to="/admin/places">
+                    <Icon as={FaMapMarker} mr="2" /> Places
                 </Link>
             </VStack>
         </Box>

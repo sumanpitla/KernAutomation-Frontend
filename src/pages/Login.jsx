@@ -1,50 +1,158 @@
-// src/pages/Login.jsx
-import React, { useState } from 'react';
-import { Box, Heading, Input, Button, Flex, FormControl, FormLabel, FormErrorMessage } from '@chakra-ui/react';
+import React, { useState, useContext } from 'react';
+import {
+  Box,
+  Heading,
+  Input,
+  Button,
+  Flex,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  Text,
+} from '@chakra-ui/react';
 import Layout from '../components/Navbar/Layout';
-
+import { UserContext } from '../components/context/UserContext'; // Import UserContext
 
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [otp, setOtp] = useState('');
   const [error, setError] = useState(null);
+  const [step, setStep] = useState(1); // Step 1: Login, Step 2: Verify OTP
+  const [successMessage, setSuccessMessage] = useState('');
+  const { setUserData } = useContext(UserContext); // Use setUserData from UserContext
 
-  const handleSubmit = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
-    // Add login logic here, e.g. API call or authentication
-    if (username === '' || password === '') {
-      setError('Please fill in both username and password');
-    } else {
-      // Login successful, redirect to dashboard or other page
-      console.log('Login successful!');
+    setError(null);
+    if (email === '') {
+      setError('Please enter your email');
+      return;
+    }
+
+    try {
+      const response = await fetch('https://kernn.azurewebsites.net/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      const data = await response.json();
+
+      if (response.ok) {
+        setSuccessMessage('OTP sent successfully!');
+        setStep(2);
+      } else {
+        setError(data.message || 'Failed to send OTP');
+      }
+    } catch (err) {
+      setError('An error occurred. Please try again.');
+    }
+  };
+
+  const handleVerifyOtp = async (event) => {
+    event.preventDefault();
+    setError(null);
+    if (otp === '') {
+      setError('Please enter the OTP');
+      return;
+    }
+
+    try {
+      const response = await fetch('https://kernn.azurewebsites.net/api/verify_otp', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, otp }),
+      });
+      const data = await response.json();
+
+      if (response.ok) {
+        setUserData({
+          accessToken: data.accesstoken,
+          refreshToken: data.refresh_token,
+          username: data.username,
+          role: data.role,
+          userId: data.user_id,
+        }); // Store user data in context
+        setSuccessMessage('OTP Verified Successfully!');
+      } else {
+        setError(data.message || 'OTP verification failed');
+      }
+    } catch (err) {
+      setError('An error occurred. Please try again.');
     }
   };
 
   return (
     <Layout>
-    <Box>
-      <Flex p={4} direction="column" align="center">
-        <Heading>Login Page</Heading>
-        <FormControl isInvalid={error}>
-          <FormLabel>Username</FormLabel>
-          <Input
-            type="text"
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
-            placeholder="Username"
-          />
-          <FormLabel>Password</FormLabel>
-          <Input
-            type="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            placeholder="Password"
-          />
-          {error && <FormErrorMessage>{error}</FormErrorMessage>}
-          <Button mt={4} onClick={handleSubmit}>Login</Button>
-        </FormControl>
+      <Flex align="center" justify="center" height="80vh" bg="gray.100">
+        <Box
+          p={6}
+          maxWidth="500px"
+          borderWidth={1}
+          borderRadius="lg"
+          boxShadow="lg"
+          bg="white"
+        >
+          <Heading as="h2" size="lg" textAlign="center" mb={6} color="teal.500">
+            {step === 1 ? 'Login' : 'Verify OTP'}
+          </Heading>
+
+          {successMessage && (
+            <Text mb={4} color="green.500" textAlign="center">
+              {successMessage}
+            </Text>
+          )}
+
+          {step === 1 ? (
+            <form onSubmit={handleLogin}>
+              <FormControl isInvalid={!!error} mb={4}>
+                <FormLabel>Email</FormLabel>
+                <Input
+                  type="email"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  placeholder="Enter your email"
+                  focusBorderColor="teal.400"
+                />
+                {error && <FormErrorMessage>{error}</FormErrorMessage>}
+              </FormControl>
+
+              <Button
+                type="submit"
+                colorScheme="teal"
+                width="full"
+                mt={4}
+                isLoading={false}
+              >
+                Send OTP
+              </Button>
+            </form>
+          ) : (
+            <form onSubmit={handleVerifyOtp}>
+              <FormControl isInvalid={!!error} mb={4}>
+                <FormLabel>OTP</FormLabel>
+                <Input
+                  type="text"
+                  value={otp}
+                  onChange={(event) => setOtp(event.target.value)}
+                  placeholder="Enter the OTP sent to your email"
+                  focusBorderColor="teal.400"
+                />
+                {error && <FormErrorMessage>{error}</FormErrorMessage>}
+              </FormControl>
+
+              <Button
+                type="submit"
+                colorScheme="teal"
+                width="full"
+                mt={4}
+                isLoading={false}
+              >
+                Verify OTP
+              </Button>
+            </form>
+          )}
+        </Box>
       </Flex>
-    </Box>
     </Layout>
   );
 };

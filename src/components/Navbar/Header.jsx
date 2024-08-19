@@ -15,7 +15,7 @@ import { SearchIcon } from "@chakra-ui/icons";
 const Header = () => {
   return (
     <Flex
-      bg={useColorModeValue("gray.100", "gray.900")}
+      bg={useColorModeValue("teal.300", "gray.900")}
       p={4}
       align="center"
       justify="space-between"
@@ -24,7 +24,7 @@ const Header = () => {
         KERNN Automations
       </Heading>
       <HStack spacing={4}>
-        <Button colorScheme="teal" variant="outline" mr={4} as={RouterLink} to="/">
+        <Button colorScheme="white" variant="outline" mr={4} as={RouterLink} to="/">
           Home</Button>
         <InputGroup size="sm">
           <InputLeftElement
