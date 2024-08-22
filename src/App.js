@@ -26,7 +26,15 @@ import ViewApllications from './components/common/ApplicationsManagement/ViewApp
 import PaySlips from './components/common/ApplicationsManagement/PaySlips';
 import LOR from './components/common/ApplicationsManagement/ApplyLOR';
 import ExpereinceLetters from './components/common/ApplicationsManagement/ApplyExperienceLetter';
+
+//Indents Management
 import Indents from './components/common/IndentsManagement/Indents';
+import NewIndent from './components/common/IndentsManagement/NewIndent';
+import ApproveDecline from './components/common/IndentsManagement/ApproveDecline';
+import StatusPage from './components/common/IndentsManagement/StatusPage';
+import Consumption from './components/common/IndentsManagement/Consumption';
+import IndReports from './components/common/IndentsManagement/Reports';
+import Return from './components/common/IndentsManagement/Return';
 
 //adminSpecificComponents
 import Contracts from './components/AdminSpecial/ContractsManagement/Contracts';
@@ -91,6 +99,12 @@ const App = () => (
           <Route path="/admin/applications/lor" element={<LOR />} />
           {/* //Indents Managemnet */}
           <Route path="/admin/indents" element={<Indents />} />
+          <Route path="/admin/indents/new" element={<NewIndent />} />
+          <Route path="/admin/indents/approve-decline" element={<ApproveDecline />} />
+          <Route path="/admin/indents/status" element={<StatusPage />} />
+          <Route path="/admin/indents/consumption" element={<Consumption />} />
+          <Route path="/admin/indents/reports" element={<IndReports />} />
+          <Route path="/admin/indents/return" element={<Return />} />
           {/* //Routing Managemnet */}
           <Route path="/admin/routing" element={<Routing />} />
           {/* //Contracts Managemnet */}
