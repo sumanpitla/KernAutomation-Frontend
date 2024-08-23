@@ -58,6 +58,9 @@ import GetDistricts from './components/AdminSpecial/PlacesManagement/GetDistrict
 import CreateCentre from './components/AdminSpecial/PlacesManagement/CreateCentre';
 import GetCenters from './components/AdminSpecial/PlacesManagement/GetCenters';
 import CreateVillage from './components/AdminSpecial/PlacesManagement/CreateVillage';
+   //Milk Management sub in places management
+import MilkEntry from './components/common/MilkManagement/MilkEntry';
+import GetMilk from './components/common/MilkManagement/GetMilk';
 
 
 
@@ -129,6 +132,9 @@ const App = () => (
           <Route path="/admin/places/create-centre" element={<CreateCentre />} />
           <Route path="/admin/places/get-centers" element={<GetCenters />} />
           <Route path="/admin/places/create-village" element={<CreateVillage />} />
+          {/* milk mangment sub in place mangmnt */}
+          <Route path="milk/milk-entry" element={<MilkEntry />} />
+          <Route path="milk/get-milk" element={<GetMilk />} />
           
       
       

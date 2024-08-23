@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Button, Input, Text, useToast } from '@chakra-ui/react';
+import { useToast, FormControl, FormLabel, Input, Button,Box,Flex } from '@chakra-ui/react';
 
 const CreateState = () => {
     const [stateName, setStateName] = useState('');
@@ -7,31 +7,55 @@ const CreateState = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch('https://kernn.azurewebsites.net/api/create_state', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                state_name: stateName
-            }),
-        });
+        try {
+            const response = await fetch('https://kernn.azurewebsites.net/api/create_state', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    state_name: stateName
+                }),
+            });
 
-        const data = await response.json();
-        toast({
-            title: data.message || 'State Created Successfully',
-            status: 'success',
-            duration: 3000,
-            isClosable: true,
-        });
+            const data = await response.json();
+            console.log('API Response:', data); // Print the response from the API
+            toast({
+                title: 'State created.',
+                description: `State ${stateName} has been created successfully.`,
+                status: 'success',
+                duration: 5000,
+                isClosable: true,
+            });
+        } catch (error) {
+            console.error('Error creating state:', error);
+            toast({
+                title: 'Error',
+                description: 'There was an error creating the state.',
+                status: 'error',
+                duration: 5000,
+                isClosable: true,
+            });
+        }
     };
 
     return (
-        <Box as="form" onSubmit={handleSubmit}>
-            <Text>State Name</Text>
-            <Input value={stateName} onChange={(e) => setStateName(e.target.value)} placeholder="Enter state name" />
-            <Button type="submit" mt={4} colorScheme="blue">Create State</Button>
-        </Box>
+        <Flex justify="center" align="center" height="100vh" bg="gray.50">
+            <Box p={8} maxWidth="800px" borderWidth={1} borderRadius={8} boxShadow="lg" bg="white" align="center">
+                <form onSubmit={handleSubmit}>
+                    <FormControl id="state-name" isRequired align="center">
+                        <FormLabel>State Name</FormLabel>
+                        <Input
+                            type="text"
+                            value={stateName}
+                            onChange={(e) => setStateName(e.target.value)}
+                            placeholder="Enter state name"
+                        />
+                    </FormControl>
+                    <Button type="submit" colorScheme="blue" mt={4}>Create State</Button>
+                </form>
+            </Box>
+        </Flex>
     );
 };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Button, Heading, VStack,HStack } from '@chakra-ui/react';
+import { Box, Button, Heading,HStack } from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
 
 const HomePagePlacesManagement = () => {
@@ -28,6 +28,16 @@ const HomePagePlacesManagement = () => {
                 <Button colorScheme="blue" as={RouterLink} to="/admin/places/create-village">
                     Create Village
                 </Button>
+                <Box m="2">
+                    <Button colorScheme="teal" variant="outline" as={RouterLink} to="/milk/milk-entry">
+                        MilkEntry
+                    </Button>
+                </Box>
+                <Box m="2">
+                    <Button colorScheme="teal" variant="outline" fontColour="black" as={RouterLink} to="/milk/get-milk">
+                        Get Milk
+                    </Button>
+                </Box>
             </HStack>
         </Box>
     );

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext} from 'react';
 import {
   Box,
   Heading,
@@ -12,6 +12,7 @@ import {
 } from '@chakra-ui/react';
 import Layout from '../components/Navbar/Layout';
 import { UserContext } from '../components/context/UserContext'; // Import UserContext
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -20,6 +21,9 @@ const Login = () => {
   const [step, setStep] = useState(1); // Step 1: Login, Step 2: Verify OTP
   const [successMessage, setSuccessMessage] = useState('');
   const { setUserData } = useContext(UserContext); // Use setUserData from UserContext
+
+  const navigate = useNavigate(); // Initialize navigate
+
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -73,6 +77,8 @@ const Login = () => {
           userId: data.user_id,
         }); // Store user data in context
         setSuccessMessage('OTP Verified Successfully!');
+        console.log(data);
+        navigate('/admin'); // Redirect to dashboard
       } else {
         setError(data.message || 'OTP verification failed');
       }
