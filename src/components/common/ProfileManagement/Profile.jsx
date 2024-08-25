@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Box, Text, Heading, Flex, Avatar, Divider } from '@chakra-ui/react';
 import Layout from '../../Navbar/Layout';
-const Profile = () => {
-  // Example user data (replace this with actual context data when ready)
-  const userData = {
-    username: 'Jane Doe',
-    role: 'Manager',
-    id: '987654',
-  };
+import { UserContext } from '../../context/UserContext'; // Import UserContext
 
-  // Destructure the example user data
-  const { username, role, id } = userData;
+const Profile = () => {
+  const { userData } = useContext(UserContext); // Access user data from context
+  console.log(userData);
+  // If user data is not available, return null or a loading state
+  if (!userData) {
+    return <Text>Loading...</Text>;
+  }
+  console.log(userData);
+  const { username, role, userId } = userData; // Destructure the user data
 
   return (
     <Layout>
@@ -32,7 +33,7 @@ const Profile = () => {
           </Text>
           <Divider />
           <Text fontSize="md" color="gray.600" mt="4">
-            User ID: {id}
+            User ID: {userId}
           </Text>
         </Box>
       </Flex>

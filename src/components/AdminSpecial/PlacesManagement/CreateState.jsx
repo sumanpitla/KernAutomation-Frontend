@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useToast, FormControl, FormLabel, Input, Button,Box,Flex } from '@chakra-ui/react';
+import Layout from '../../Navbar/Layout';
 
 const CreateState = () => {
     const [stateName, setStateName] = useState('');
@@ -40,22 +41,25 @@ const CreateState = () => {
     };
 
     return (
-        <Flex justify="center" align="center" height="100vh" bg="gray.50">
-            <Box p={8} maxWidth="800px" borderWidth={1} borderRadius={8} boxShadow="lg" bg="white" align="center">
-                <form onSubmit={handleSubmit}>
-                    <FormControl id="state-name" isRequired align="center">
-                        <FormLabel>State Name</FormLabel>
-                        <Input
-                            type="text"
-                            value={stateName}
-                            onChange={(e) => setStateName(e.target.value)}
-                            placeholder="Enter state name"
-                        />
-                    </FormControl>
-                    <Button type="submit" colorScheme="blue" mt={4}>Create State</Button>
-                </form>
-            </Box>
-        </Flex>
+        <Layout>
+            <Flex justify="center" align="center" height="40vh" bg="white.50">
+                <Box p={8} maxWidth="800px" borderWidth={1} borderRadius={8} boxShadow="lg" bg="white" align="center">
+                    <form onSubmit={handleSubmit}>
+                        <FormControl id="state-name" isRequired align="center">
+                            <FormLabel>State Name</FormLabel>
+                            <Input
+                                type="text"
+                                value={stateName}
+                                onChange={(e) => setStateName(e.target.value)}
+                                placeholder="Enter state name"
+                            />
+                        </FormControl>
+                        <Button type="submit" colorScheme="blue" mt={4}>Create State</Button>
+                    </form>
+                </Box>
+            </Flex>
+        
+        </Layout>
     );
 };
 

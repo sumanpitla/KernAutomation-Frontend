@@ -1,4 +1,4 @@
-// Header.js
+// Header.jsx
 import {
   Flex,
   Heading,
@@ -15,23 +15,28 @@ import { SearchIcon } from "@chakra-ui/icons";
 const Header = () => {
   return (
     <Flex
-      bg={useColorModeValue("teal.300", "gray.900")}
+      bg={useColorModeValue("teal.400", "gray.800")}
       p={4}
       align="center"
       justify="space-between"
+      boxShadow="md"
     >
-      <Heading size="lg" color={useColorModeValue("gray.800", "white")} >
+      <Heading size="lg" color={useColorModeValue("white", "teal.200")}>
         KERNN Automations
       </Heading>
       <HStack spacing={4}>
-        <Button colorScheme="white" variant="outline" mr={4} as={RouterLink} to="/">
-          Home</Button>
-        <InputGroup size="sm">
-          <InputLeftElement
-            pointerEvents="none"
-            children={<SearchIcon color="gray.300" />}
+        <Button colorScheme="teal" variant="solid" as={RouterLink} to="/">
+          Home
+        </Button>
+        <InputGroup size="md" maxW="300px">
+          <InputLeftElement pointerEvents="none">
+            <SearchIcon color="gray.500" />
+          </InputLeftElement>
+          <Input
+            placeholder="Search..."
+            focusBorderColor="teal.400"
+            _placeholder={{ color: "gray.500" }}
           />
-          <Input placeholder="Search..." />
         </InputGroup>
       </HStack>
     </Flex>

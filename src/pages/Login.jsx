@@ -76,8 +76,9 @@ const Login = () => {
           role: data.role,
           userId: data.user_id,
         }); // Store user data in context
+        console.log("userdata:",data.role,data.username,data.user_id);
         setSuccessMessage('OTP Verified Successfully!');
-        console.log(data);
+        //console.log(data);
         navigate('/admin'); // Redirect to dashboard
       } else {
         setError(data.message || 'OTP verification failed');
@@ -89,7 +90,7 @@ const Login = () => {
 
   return (
     <Layout>
-      <Flex align="center" justify="center" height="80vh" bg="gray.100">
+      <Flex align="center" justify="center" height="50vh" bg="white.100">
         <Box
           p={6}
           maxWidth="500px"
