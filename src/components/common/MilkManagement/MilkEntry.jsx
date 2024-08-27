@@ -45,7 +45,7 @@ const MilkEntry = () => {
 
   return (
     <Layout>
-      <Flex justify="center" align="center" height="110vh" bg="white.50">
+      <Flex justify="center" align="center" height="140vh" bg="white.50">
         <Box p={8} maxWidth="700px" borderWidth={1} borderRadius={8} boxShadow="lg" bg="white">
           <VStack spacing={4}>
             <Heading as="h3" size="lg" textAlign="center">Milk Entry</Heading>

@@ -28,8 +28,8 @@ const StatusPage = () => {
 
   return (
     <Layout>
-      <Flex justify="center" align="top" height="100vh" bg="white.50" >
-        <Box p={8} maxWidth="1400px" borderWidth={1} borderRadius={8} boxShadow="lg" bg="white">
+      <Flex justify="center" align="top" height="90vh" bg="white.50" >
+        <Box p={8} maxWidth="1400px" borderWidth={1} borderRadius={4} boxShadow="lg" bg="white">
           <Heading as="h3" size="lg" textAlign="center" mb={4}>
             Indent Status
           </Heading>

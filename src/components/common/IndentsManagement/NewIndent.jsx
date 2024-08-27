@@ -40,7 +40,7 @@ const NewIndent = () => {
   return (
     <div>
     <Layout>
-    <Flex justify="center" align="center" height="90vh" bg="white.50">
+    <Flex justify="center" align="center" height="115vh" bg="white.50">
         <Box p={8} maxWidth="800px" borderWidth={1} borderRadius={8} boxShadow="lg" bg="white">
           <VStack spacing={4}>
             <Heading as="h3" size="lg" textAlign="center">New Indent</Heading>

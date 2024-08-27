@@ -5,6 +5,8 @@ import {
   useDisclosure
 } from '@chakra-ui/react';
 import axios from 'axios';
+import Layout from '../../Navbar/Layout';
+
 
 const Reports = () => {
   const [reportData, setReportData] = useState([]);
@@ -29,6 +31,7 @@ const Reports = () => {
   };
 
   return (
+    <Layout>
     <Box p={8} maxWidth="1200px" borderWidth={1} borderRadius={8} boxShadow="lg" bg="white" mx="auto">
       <Heading as="h3" size="lg" textAlign="center" mb={6}>Report Data</Heading>
       <TableContainer>
@@ -89,6 +92,7 @@ const Reports = () => {
         </Modal>
       )}
     </Box>
+    </Layout>
   );
 };
 
