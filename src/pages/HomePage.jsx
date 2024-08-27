@@ -1,7 +1,9 @@
 import React from 'react';
-import { Box, Button, Heading, Text, VStack, useColorModeValue } from '@chakra-ui/react';
+import {Flex, Box, Button, Heading, Text, VStack, useColorModeValue ,Image} from '@chakra-ui/react';
 import { Link as RouterLink } from 'react-router-dom';
 import Layout from '../components/Navbar/Layout';
+import milk from '../Assets/Homepage/milk.jpeg';
+import milk1 from '../Assets/Homepage/milk1.jpeg';
 
 const Home = () => {
   const bgColor = useColorModeValue("white.50", "gray.800");
@@ -12,7 +14,7 @@ const Home = () => {
       <Box
         bg={bgColor}
         color={textColor}
-        minH="80vh"
+        minH="40vh"
         d="flex"
         alignItems="center"
         justifyContent="center"
@@ -39,6 +41,18 @@ const Home = () => {
           </Box>
         </VStack>
       </Box>
+      <div>
+
+      <div justify="center" mt={4} align="center">
+  <Heading size="2xl">Milk products</Heading>
+  </div>   
+<Flex justify="center" mt={4}>
+  
+  <Image src={milk} alt="milk" boxSize="200px" border="2px" borderColor="gray.200" borderRadius="md" m={2} />
+  <Image src={milk1} alt="milk1" boxSize="200px" border="2px" borderColor="gray.200" borderRadius="md" m={2} />
+</Flex>
+
+      </div>
     </Layout>
   );
 };

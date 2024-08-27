@@ -38,6 +38,7 @@ const NewIndent = () => {
   };
 
   return (
+    <div>
     <Layout>
     <Flex justify="center" align="center" height="90vh" bg="white.50">
         <Box p={8} maxWidth="800px" borderWidth={1} borderRadius={8} boxShadow="lg" bg="white">
@@ -108,6 +109,7 @@ const NewIndent = () => {
         </Box>
       </Flex>
     </Layout>
+    </div>
   );
 };
 

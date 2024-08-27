@@ -15,9 +15,9 @@ const Sidebar = () => {
     const handleLeave = () => {
         setHoveredItem(null);
     };
-
+    // bg="#f5f5f5"
     return (
-        <Box width="200px" bg="#f5f5f5" p="6" height="55h" borderWidth={3}>
+        <Box width="250px" bg="white" p="6" height="55h" borderWidth={1}>
             <VStack align="start" spacing="4">
                 <Button
                     as={RouterLink}
